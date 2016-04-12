@@ -1,0 +1,97 @@
+html {
+	font-size: 20px;
+	font-family: monospace;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#left {
+	position: absolute;
+	left: 50px;
+	top: 100px;
+	width: 180px;
+	height: 180px;
+
+	font-size: 15px;
+
+	padding: 2px 2px 2px 2px;
+
+	color: white;
+	background-color: #D6D298;
+	text-shadow: 0.5px 0.5px black;
+	border: solid white 2px;
+   	border-radius: 6px;
+}
+
+#easy {
+	position: absolute;
+	background: #00B300;
+	left: 55px;
+	top: 300px;
+}
+
+#hard {
+	position: absolute;
+	background: #C45E5E;
+	left: 145px;
+	top: 300px;
+}
+
+#screen {
+	position: relative;
+	width: 100%;
+}
+
+#endBox {
+	position: absolute;
+	margin-left: -130px;
+	top: 160px;
+	left: 50%;
+	width: 250px;
+	height: 200px;
+
+	font-size: 26px;
+	font-weight: bold;
+
+	padding: 2px 2px 2px 2px;
+
+	border: solid white 2px;
+   	border-radius: 6px;
+
+   	color: white;
+   	text-shadow: 0.5px 0.5px black;
+	background-color: #D6D298;
+}
+
+.button {
+	border: 2px solid #ffffff;
+	background: #76B34B;
+	padding: 10.5px 21px;
+	border-radius: 14px;
+	color: white;
+	font-weight: normal;
+	font-size: 16px;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+#score {
+	margin: 20px;
+}
+
+#highScore {
+	margin: 12px;
+}
+
+.subhead {
+	font-weight: bold;
+	text-decoration: underline;
+	font-size: 22px;
+}
+
+#footer {
+	color: #996633;
+}
