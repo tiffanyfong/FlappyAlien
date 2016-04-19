@@ -23,6 +23,8 @@ function preload() {
 	game.load.image("pipeBottom", "img/PipeBottom.png");
 
 	game.load.audio("jump", "audio/jump.wav");
+	game.load.audio("thwack", "audio/thwack.wav");
+	game.load.audio("alienThrow", "audio/alienThrow.wav");
 };
 
 function create() { 
@@ -46,6 +48,15 @@ function create() {
 
 	// Display score on top-left
 	scoreText = game.add.text(18, 18, "0", {fontSize: '32px', fill: '#FFFFFF'});
+
+	// Audio
+	jumpSound = game.add.audio("jump");
+	jumpSound.volume = 0.5;
+	hitSound = game.add.audio("thwack");
+	evilAlienSound = game.add.audio("alienThrow");
+	evilAlienBuffer = game.add.audio("jump");	// Silence for syncronization
+	evilAlienBuffer.volume = 0;
+	evilAlienBuffer.onStop.add(addDebris, this);
 
 	reset();
 };
@@ -153,11 +164,14 @@ function start() {
 	groundTimer = game.time.events.loop(1770, addGround, this);
 
 	if (debrisToggle) {
-		debrisTimer = game.time.events.loop(2500, addDebris, this);
+		debrisTimer = game.time.events.loop(2500, throwDebris, this);
 	}
 };
 
 function gameOver() {
+	if (gameState !== 2) {
+		hitSound.play();
+	}
 	gameState = 2;
 
 	// Stop all pipes
@@ -255,6 +269,11 @@ function addPipePiece(evilOffset, initialY, piece) {
 };
 
 // Throw evil aliens at the player
+function throwDebris() {
+	evilAlienSound.play();
+	evilAlienBuffer.play();
+};
+
 function addDebris() {
 	var db = game.add.sprite(410, 270, "debris");
 	debris.add(db);
@@ -315,7 +334,7 @@ $("#highF").click(function() {
 	return false;
 });
 
-// Toggling debris (grey the unused setting)
+// Toggling evil aliens (grey the unused setting)
 $("#offA").click(function() {
 	$("#offA").css("background-color", "#2dd22d");
 	$("#onA").css("background-color", "#669966");
@@ -344,6 +363,7 @@ $("#onP").click(function() {
 function jump() {
 	if (gameState !== 2) {
 		player.body.velocity.y = -350;
+		jumpSound.play();
 
 		// Alien angles up
 		game.add.tween(player).to(
