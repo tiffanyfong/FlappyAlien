@@ -21,6 +21,8 @@ function preload() {
 	game.load.image("debris", "img/alienInverted.png");
 	game.load.image("pipeTop", "img/PipeTop.png");
 	game.load.image("pipeBottom", "img/PipeBottom.png");
+
+	game.load.audio("jump", "audio/jump.wav");
 };
 
 function create() { 
