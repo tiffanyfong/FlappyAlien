@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Flappy Alien</title>
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	</head>
+
+	<body>
+		<center>
+			<div id="left">
+				<p>Press spacebar to jump. New settings are applied at reset.</p>
+				<p class="subhead">Custom Settings</p>
+				<p class="settings">Gravity</p>
+				<a href="#" id="lowG" class='button'>Low</a>
+				<a href="#" id="mediumG" class='button default'>Medium</a>
+				<a href="#" id="highG" class='button'>High</a>
+				<p class="settings">Pipe Frequency</p>
+				<a href="#" id="lowF" class='button'>Low</a>
+				<a href="#" id="mediumF" class='button default'>Medium</a>
+				<a href="#" id="highF" class='button'>High</a>
+				<p class="settings">Evil Aliens</p>
+				<a href="#" id="offA" class='button default'>Off</a>
+				<a href="#" id="onA" class='button'>On</a>
+				<p class="settings">Evil Pipes</p>
+				<a href="#" id="offP" class='button default'>Off</a>
+				<a href="#" id="onP" class='button'>On</a>
+			</div>
+			
+
+			<div id="screen">
+				<div id="endBox">
+					<p id="score">Score: 0</p>
+					<p id="highScore">High Score: 0</p>
+					<br>
+					<a href="#" id="reset">Try Again</a>
+				</div>
+			</div>
+
+			<p id="footer">Created by T Fong in 2016</p>
+		</center>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script type="text/javascript" src="phaser.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+	</body>
+</html>
