@@ -115,7 +115,7 @@ function reset() {
 
 function update() {
 	game.physics.arcade.collide(player, blocks, gameOver, null, this);
-	game.physics.arcade.collide(player, pipes, gameOver, null, this);
+	//game.physics.arcade.collide(player, pipes, gameOver, null, this);
 	game.physics.arcade.collide(debris, blocks);
 
 	if (gameState === 1) {
@@ -130,8 +130,8 @@ function update() {
 			player.body.velocity.x = 0;
 			collisionToggle = 0;
 		}
-		else if (debrisToggle && collisionToggle && player.x < 15) {
-			player.body.velocity.x = 7;
+		else if (debrisToggle && collisionToggle && player.x < 10) {
+			player.body.velocity.x = Math.max(10, player.body.velocity.x * -1);
 		}
 
 		// Update score
@@ -228,7 +228,7 @@ function gameOver() {
 // When alien hits debris
 function bounce() {
 	debris.forEach(function(db) {
-		db.body.velocity.x = 15;
+		db.body.velocity.x = 25;
 	}, this);
 	collisionToggle = 1;
 };
