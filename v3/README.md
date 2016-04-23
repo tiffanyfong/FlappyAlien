@@ -2,11 +2,11 @@
 
 Final version - 7 weeks into the project.
 
-Added custom settings including gravity, pipe frequency, "evil aliens", and "evil pipes" (play to find out mwahaha). Enabled the space bar as a reset-trigger after loss. 
+Added custom settings including gravity, pipe frequency, "evil aliens", and "evil pipes" (play to find out mwahaha). Enabled the space bar as a reset-trigger after loss. Added game sounds from various Internet sources.
 
 This project will have no more periodic updates after April 26.
 
-To see the game, either download my files and use Fenix, or follow these steps if you have Python.
+To see the game, either download my files and use your local web server, or follow these steps if you have Python.
 
 1. Download my files. <br>
 2. Type in command line "python -m SimpleHTTPServer" <br>
