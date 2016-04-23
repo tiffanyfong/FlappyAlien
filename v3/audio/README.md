@@ -1,6 +1,7 @@
 #I do not own these audio files.
 
-Sources:
-dklon - jump
-soundbible - thwack
-amazonparrot975 (Pikmin Sound Effects) - alienThrow
+Sources:<br>
+dklon - jump <br>
+soundbible - thwack (die) <br>
+Pikmin Sound Effects - alienThrow (throwing evil aliens) <br>
+Sonic Ring Sound - score++ (pipe scoring)
