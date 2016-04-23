@@ -11,6 +11,8 @@ var debrisToggle = 0; // 0 = off, 1 = on
 var pipeToggle = 0; // 0 = off, 1 = on
 var score = 0;
 var highScore = 0;
+var scoreToggle = 1; // prevents double scoring of pipes
+var collisionToggle = 0; // evil alien collision
 var scoreText;
 
 function preload() {
@@ -25,6 +27,7 @@ function preload() {
 	game.load.audio("jump", "audio/jump.wav");
 	game.load.audio("thwack", "audio/thwack.wav");
 	game.load.audio("alienThrow", "audio/alienThrow.wav");
+	game.load.audio("score++", "audio/score++.mp3");
 };
 
 function create() { 
@@ -51,12 +54,14 @@ function create() {
 
 	// Audio
 	jumpSound = game.add.audio("jump");
-	jumpSound.volume = 0.5;
+	jumpSound.volume = 0.3;
 	hitSound = game.add.audio("thwack");
 	evilAlienSound = game.add.audio("alienThrow");
-	evilAlienBuffer = game.add.audio("jump");	// Silence for syncronization
+	evilAlienBuffer = game.add.audio("thwack");	// Silence for syncronization
 	evilAlienBuffer.volume = 0;
 	evilAlienBuffer.onStop.add(addDebris, this);
+	scoreSound = game.add.audio("score++");
+	scoreSound.volume = 0.1;
 
 	reset();
 };
@@ -120,12 +125,25 @@ function update() {
 		if (player.angle < 40) 
 			player.angle += 1;
 
+		// Move alien back to normal x position (evilAlien)
+		if (debrisToggle && collisionToggle && player.x > 150) {
+			player.body.velocity.x = 0;
+			collisionToggle = 0;
+		}
+		else if (debrisToggle && collisionToggle && player.x < 15) {
+			player.body.velocity.x = 7;
+		}
+
 		// Update score
 		pipes.forEach(function(pipe) {
 			if (!pipe.scored && (pipe.x + 20 < player.x)) {
 				pipe.scored = true;
-				score += 0.5; // Because each column has two pipes
-				scoreText.text = score;
+				if (scoreToggle) { // Prevents double scoring
+					score += 1;
+					scoreText.text = score;
+					scoreSound.play();
+				}
+				scoreToggle = !scoreToggle;
 			}
 		}, this);
 	}
@@ -210,8 +228,9 @@ function gameOver() {
 // When alien hits debris
 function bounce() {
 	debris.forEach(function(db) {
-		db.body.velocity.x = 10;
+		db.body.velocity.x = 15;
 	}, this);
+	collisionToggle = 1;
 };
 
 function addGround() {
@@ -271,7 +290,7 @@ function addPipePiece(evilOffset, initialY, piece) {
 // Throw evil aliens at the player
 function throwDebris() {
 	evilAlienSound.play();
-	evilAlienBuffer.play();
+	evilAlienBuffer.play(); // sync buffer, then addDebris
 };
 
 function addDebris() {
