@@ -115,7 +115,7 @@ function reset() {
 
 function update() {
 	game.physics.arcade.collide(player, blocks, gameOver, null, this);
-	//game.physics.arcade.collide(player, pipes, gameOver, null, this);
+	game.physics.arcade.collide(player, pipes, gameOver, null, this);
 	game.physics.arcade.collide(debris, blocks);
 
 	if (gameState === 1) {
