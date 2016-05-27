@@ -1,8 +1,8 @@
 # Flappy Alien
 
-CS189 Second Half Project.
+<strong>No longer being updated regularly</strong>
 
-<strong>UPDATE: This project is officially over, but edits may come and go in the future.</strong>
+CS189 Second Half Project.
 
 Play here! http://tiffanyfong.github.io/FlappyAlien/v3/
 
